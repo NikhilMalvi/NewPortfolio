@@ -1,0 +1,139 @@
+.projectListWrapper {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  background: #dce9ff;
+}
+
+.projectListContainer {
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.projectListHeading {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #022b63;
+}
+
+/* SEARCH + FILTER */
+.filterBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 12px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.filterSelect {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+  font-size: 15px;
+}
+
+/* TABLE */
+.projectTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.projectTable thead tr {
+  background: var(--prime-color);
+  color: #fff;
+}
+
+.projectTable th,
+.projectTable td {
+  padding: 14px;
+  border-bottom: 1px solid #ececec;
+  vertical-align: middle;
+}
+
+.tableImg {
+  width: 80px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* TAGS */
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 6px 12px;
+  background: var(--prime-color);
+  color: #fff;
+  font-size: 12px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.tag.tool {
+  background: #222;
+}
+
+/* ACTION BUTTONS */
+.actionCell {
+  display: flex;
+  gap: 10px;
+}
+
+.editBtn,
+.deleteBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editBtn {
+  background: #007bff;
+  color: #fff;
+}
+
+.deleteBtn {
+  background: #ff4b4b;
+  color: #fff;
+}
+
+.editBtn:hover,
+.deleteBtn:hover {
+  opacity: 0.85;
+}
+
+.emptyMsg {
+  text-align: center;
+  padding: 35px;
+  color: gray;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .filterBar {
+    flex-direction: column;
+  }
+
+  .actionCell {
+    flex-direction: column;
+  }
+}

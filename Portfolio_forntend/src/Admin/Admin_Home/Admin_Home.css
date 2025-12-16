@@ -1,0 +1,42 @@
+.admin_section {
+  width: 100%;
+  padding: 40px 60px;
+  background: color-mix(in srgb, var(--prime-color) 15%, transparent);
+}
+
+.adminHeading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--sendory-color);
+}
+
+/* Card container */
+.adminCard {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Left and Right Columns */
+.adminLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.adminRight {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Label + input wrapper */
+
+/* Upload Box */

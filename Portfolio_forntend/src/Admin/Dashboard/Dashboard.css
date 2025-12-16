@@ -1,0 +1,50 @@
+.dashboard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 60px;
+  background: #dce9ff;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  align-items: start;
+  padding: 10px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 30px 40px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dashboard-card p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.dashboard-card h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 10px;
+}
+
+.dashborad-project {
+  background: #ffff;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 20px;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}

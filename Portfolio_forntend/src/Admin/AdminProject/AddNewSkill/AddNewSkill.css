@@ -1,0 +1,107 @@
+.adminSkillWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  background: #dce9ff;
+}
+
+.adminSkillContainer {
+  width: 100%;
+  max-width: 1100px;
+  padding: 32px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+}
+
+.adminSkillHeading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #022b63;
+  margin-bottom: 25px;
+}
+
+.adminSkillGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 25px;
+}
+
+.skillRow {
+  margin-bottom: 18px;
+}
+
+.skillLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.skillInput {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+  font-size: 15px;
+}
+
+.skillInput:focus {
+  outline: none;
+  border-color: var(--prime-color);
+  box-shadow: 0 0 5px rgba(0, 122, 255, 0.2);
+}
+
+.skillSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.previewBox {
+  width: 100%;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  background: #fafafa;
+  text-align: center;
+}
+
+.previewBox h4 {
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.previewTag {
+  background: var(--prime-color);
+  padding: 6px 12px;
+  color: white;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* Save button */
+.skillSaveBtn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--prime-color);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.skillSaveBtn:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .adminSkillGrid {
+    grid-template-columns: 1fr;
+  }
+}

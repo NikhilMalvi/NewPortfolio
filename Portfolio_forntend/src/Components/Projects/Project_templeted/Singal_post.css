@@ -1,0 +1,164 @@
+.singal_post {
+  padding-top: 50px;
+}
+
+.singal_container {
+  align-items: start;
+  padding: 50px;
+  margin-bottom: 20px;
+  background: var(--border-color);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.singal_post .title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.singal_post .title h1 {
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.4em;
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+  color: var(--prime-color);
+}
+.singal_post .title p {
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: capitalize;
+  color: var(--sendory-color);
+}
+
+.singal_post .col1,
+.singal_post .col2 {
+  width: 100%;
+}
+
+.singal_post .col2 {
+  margin-top: 40px;
+  text-align: start;
+}
+
+.singal_post .col1 img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.singal_post .col2 h1 {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.singal_post .col2 h1 span {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--sendory-color);
+}
+
+.post_description p {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--sendory-color);
+}
+
+.post_description {
+  display: inline-block;
+}
+
+.list_post_data {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--secondldory-border);
+}
+
+.post_icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post_icons,
+.post_icons a {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--sendory-color);
+}
+
+@media (max-width: 1250px) {
+  .singal_container {
+    padding: 30px;
+  }
+
+  .list_post_data {
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .post_icons {
+    max-width: 50%;
+    flex: 1 1 calc(50% - 30px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .singal_post .title p {
+    font-size: 30px;
+  }
+
+  .singal_post .title h1 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .singal_post .title p {
+    font-size: 25px;
+  }
+
+  .singal_post .title h1 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .singal_container {
+    padding: 15px;
+  }
+
+  .post_icons {
+    max-width: 100%;
+    flex: 1 1 100%;
+    /* justify-content: center; */
+  }
+
+  .list_post_data {
+    justify-content: center;
+  }
+
+  .post_icons,
+  .post_icons a {
+    font-size: 14px;
+  }
+
+  .singal_post .col2 {
+    margin-top: 0px;
+  }
+
+  .singal_post .col2 h1 {
+    font-size: 15px;
+  }
+
+  .singal_post .col2 h1 span {
+    font-size: 13px;
+  }
+}

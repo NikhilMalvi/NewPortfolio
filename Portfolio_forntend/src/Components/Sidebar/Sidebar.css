@@ -1,0 +1,241 @@
+.sidebar {
+  background: var(--background-color);
+}
+
+.sidebar .profile,
+.icons_container,
+.imgeslider {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #eff4fd5e;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+.proflie_name,
+.follow {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  color: var(--sendory-color);
+}
+
+.profile h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4em;
+  color: var(--text-color);
+  margin: 0 0 15px;
+}
+
+.btn_border {
+  border-radius: 5px !important;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.about_button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgeslider {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  height: 330px;
+  width: 100%;
+}
+
+.slider_wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 !important;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.carousel_card_active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: visible;
+}
+
+.carousel_img {
+  max-width: 174px;
+  height: 174px;
+  object-fit: cover;
+  border-radius: 10px;
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.carousel_card h2 {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--sendory-color);
+}
+
+.carousel_card:hover {
+  transform: scale(1.1);
+}
+
+.slider {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slider_arrow_left,
+.slider_arrow_right {
+  position: absolute;
+  font-size: 30px;
+  top: 50%;
+  transform: translate(0, -50%);
+  color: var(--background-color);
+  background: var(--prime-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider_arrow_left {
+  left: 0;
+}
+
+.slider_arrow_right {
+  right: 0;
+}
+
+.slider_pagination {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.pagination_dot {
+  height: 10px;
+  width: 10px;
+  background-color: #eff4fda2;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.pagination_dot:hover {
+  transform: scale(1.2);
+}
+
+.pagination_dot_active {
+  background-color: var(--background-color);
+}
+
+.icons_container h3 {
+  font-size: 25px !important;
+}
+
+.social_icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.social_icons a {
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  color: var(--sendory-color);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.social_icons a svg {
+  height: 25px;
+  width: 25px;
+}
+
+.social_icons a:hover {
+  background: var(--sendory-color);
+  color: var(--background-color);
+}
+
+.Copy_right h1 {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.2;
+  margin: 20px 0;
+  margin-bottom: 0;
+}
+
+.follow {
+  margin-top: 10px !important;
+}
+
+@media (max-width: 1850px) {
+  .carousel_img {
+    max-width: 120px;
+    height: 120px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 800px) {
+  .carousel_img {
+    max-width: 90px;
+    height: 90px;
+    object-fit: contain;
+  }
+
+  .carousel_card h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .carousel_img {
+    max-width: 150px;
+    height: 150px;
+    object-fit: contain;
+  }
+}

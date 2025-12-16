@@ -1,0 +1,189 @@
+.projectAdminWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  background: #dce9ff; /* like other admin pages */
+}
+
+.projectAdminContainer {
+  width: 100%;
+  max-width: 1100px;
+  background: #ffffff;
+  padding: 32px;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  border-radius: 18px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+.projectHeading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #022b63;
+  margin-bottom: 28px;
+}
+
+/* 2 main columns (form + image) */
+.projectGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+  gap: 28px;
+}
+
+/* Left column */
+.projectMain {
+  width: 100%;
+}
+
+/* Right column */
+.projectSide {
+  width: 100%;
+}
+
+/* Form rows */
+.projectRow {
+  margin-bottom: 18px;
+}
+
+.projectRowTwoCol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.projectCol {
+  width: 100%;
+}
+
+/* Label & input */
+.projectLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.projectInput {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.projectInput:focus {
+  outline: none;
+  border-color: var(--prime-color);
+  box-shadow: 0 0 4px rgba(0, 122, 255, 0.2);
+}
+
+/* Tools tags */
+.toolTagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.toolTag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  background: var(--prime-color);
+  color: #fff;
+}
+
+/* Skills checkboxes */
+.skillsCheckboxGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.skillCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* Quill editor */
+.projectQuillWrapper {
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  min-height: 150px;
+  background: #ffffff;
+  padding: 4px;
+}
+
+.projectQuillWrapper .ql-container {
+  border: none !important;
+}
+
+/* Image upload block */
+.projectUploadBox {
+  width: 100%;
+  height: 260px;
+  border-radius: 12px;
+  border: 2px dashed #c0c0c0;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.projectUploadBox:hover {
+  border-color: var(--prime-color);
+  background: #f0f7ff;
+}
+
+.projectUploadPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.projectUploadPlaceholder {
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Save button */
+.projectSaveBtn {
+  margin-top: 24px;
+  width: 100%;
+  background: var(--prime-color);
+  color: #ffffff;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.projectSaveBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectRowTwoCol {
+    grid-template-columns: 1fr;
+  }
+}

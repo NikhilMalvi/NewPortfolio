@@ -1,0 +1,158 @@
+.About_me .col1 {
+  width: 35%;
+  flex: 0 0 35%;
+}
+.About_me .col1 img,
+.MyEducation .col2 img {
+  max-width: 100%;
+}
+
+.About_me .col2 {
+  width: 65%;
+  flex: 0 0 65%;
+  padding-left: 20px;
+}
+
+.About_me .col2 h1,
+.MyEducation .col1 h1 {
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--sendory-color);
+  margin-bottom: 10px;
+}
+
+.About_me .col2 P,
+.MyEducation .col1 p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.My_workdata {
+  background-color: var(--seconddory-bg);
+}
+
+.My_workdata .container_data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.box_heding {
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+}
+
+.box_heding h1 {
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--sendory-color);
+  margin-bottom: 10px;
+}
+
+.box_heding p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.MyEducation .col1 {
+  width: 70%;
+  flex: 0 0 70%;
+  padding-right: 20px;
+}
+
+.MyEducation .col2 {
+  width: 30%;
+  flex: 0 0 30%;
+}
+
+@media (max-width: 1500px) {
+  .MyEducation .col2 {
+    width: 40%;
+    flex: 0 0 40%;
+  }
+
+  .MyEducation .col1 {
+    width: 60%;
+    flex: 0 0 60%;
+  }
+}
+
+@media (max-width: 1380px) {
+  .About_me .col1,
+  .About_me .col2 {
+    width: 100%;
+    flex: 0 0 100%;
+    padding: 0;
+  }
+
+  .MyEducation .col1,
+  .MyEducation .col2 {
+    width: 100%;
+    flex: 0 0 100%;
+    padding: 0;
+  }
+
+  .MyEducation .col2 {
+    order: 1;
+  }
+
+  .MyEducation .col1 {
+    order: 2;
+  }
+}
+
+@media (max-width: 1200px) {
+  .box_heding {
+    padding: 20px;
+  }
+
+  .box_heding h1 {
+    font-size: 30px;
+  }
+
+  .About_me .col2 h1,
+  .MyEducation .col1 h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .box_heding {
+    padding: 10px;
+  }
+
+  .box_heding p {
+    font-size: 14px;
+  }
+
+  .About_me .col2 P,
+  .MyEducation .col1 p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 550px) {
+  .box_heding h1 {
+    font-size: 25px;
+  }
+
+  .My_workdata .container_data {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .My_workdata .container_data {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,129 @@
+.loginWrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #dce9ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 32px 28px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.loginTitle {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #022b63;
+}
+
+.loginSubtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 22px;
+}
+
+.loginForm {
+  width: 100%;
+}
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.loginLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.loginInput {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.loginInput:focus {
+  border-color: var(--prime-color);
+  box-shadow: 0 0 4px rgba(0, 122, 255, 0.25);
+}
+
+/* password field with icon */
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper .loginInput {
+  padding-right: 40px;
+}
+
+.togglePassBtn {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #666;
+}
+
+/* Error text */
+.loginError {
+  color: #ff4b4b;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* Submit btn */
+.loginBtn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--prime-color);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: 0.2s;
+}
+
+.loginBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Demo hint */
+.hintText {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #777;
+}
+
+.hintText span {
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .loginCard {
+    padding: 24px 18px;
+  }
+}

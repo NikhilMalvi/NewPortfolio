@@ -1,0 +1,177 @@
+.container {
+  width: calc(100% - 100px);
+  padding: 20px;
+  padding-top: 35px;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.topContainer .inputBox {
+  width: 350px;
+  max-width: 350px;
+  /* height: 45px; */
+  position: relative;
+}
+
+.topContainer .inputBox input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  color: #001a40;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0px 40px;
+}
+
+.topContainer .inputBox input::placeholder {
+  color: #001a40;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.topContainer .inputBox i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #001a40;
+  font-size: 20px;
+  width: 40px;
+  height: 45px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.topContainer .profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d0cfd4;
+  position: relative;
+}
+
+.topContainer .profileContainer .profileImage {
+  width: 40px;
+  height: 40px;
+  margin: 0px 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+.topContainer .profileContainer .profileImage img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.topContainer .profileContainer .profileName {
+  font-weight: 600;
+  font-size: 14px;
+  color: #001a40;
+}
+
+.topContainer .profileContainer .menuChevron {
+  cursor: pointer;
+  line-height: 1.5;
+  font-size: 13px;
+  margin: 0px 10px;
+  color: #001a40;
+}
+
+.topContainer .profileContainer .menuChevron:hover {
+  transition: transform 0.3s ease;
+}
+
+.topContainer .profileContainer .menuContainer {
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  background: #19162c;
+  border-radius: 0.5em;
+  width: 180px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  transform: translateX(300px);
+  transition: transform 0.3s cubic-bezier(0.17, 0.81, 0.38, 1.39);
+}
+
+.topContainer .profileContainer .menuContainer::after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #19162c;
+  top: -5px;
+  right: 15px;
+  transform: rotate(45deg);
+}
+.topContainer .profileContainer .menuContainer ul {
+  width: 100%;
+  height: 100%;
+}
+
+.topContainer .profileContainer .menuContainer ul li {
+  list-style: none;
+  margin: 5px 0px;
+  width: 100%;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #757380;
+  text-align: left;
+}
+
+.topContainer .profileContainer .menuContainer ul li:hover {
+  background: #121026;
+  color: #f1f1f1;
+  transition: 0.3s;
+}
+
+.menuIcon {
+  height: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+.closeIcon {
+  height: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .menuIcon,
+  .closeIcon {
+    display: block;
+  }
+
+  .container {
+    width: 100%;
+    padding: 20px;
+    padding-top: 35px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .container {
+    width: (100% - 68px);
+  }
+
+  /* .topContainer .inputBox {
+    width: 120px;
+    z-index: 101;
+  } */
+
+  .topContainer .inputBox input:focus {
+    width: 320px;
+    transition: width 0.3s cubic-bezier(0.17, 0.81, 0.38, 1.39);
+  }
+}

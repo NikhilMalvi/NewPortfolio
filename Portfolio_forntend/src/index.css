@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sora:wght@100..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.light-mode {
+  --prime-color: #0068ff;
+  --sendory-color: #001a40;
+  --text-color: #001a40b0;
+  --background-color: #eff4fd;
+  --seconddory-bg: #e4eaf5;
+  --border-color: #001a4021;
+  --secondldory-border: #fefefe;
+  --form-color: #f8fafe;
+  --input-color: #001a4075;
+  --white-color: #ffffff;
+}
+
+.dark-mode {
+  --prime-color: #00dc93; /* Soothing blue (used for buttons, links, accents) */
+  --sendory-color: #ffffff; /* Secondary text or heading color */
+  --text-color: #d1d5db; /* Body text */
+  --background-color: #0f172a; /* Main background (very dark slate blue) */
+  --seconddory-bg: #1e293b; /* Cards, sections (light slate) */
+  --border-color: #334155; /* Muted borders */
+  --secondldory-border: #475569; /* Slightly brighter border */
+  --form-color: #1e293b; /* Form background */
+  --input-color: #cbd5e1; /* Placeholder/input text */
+  --white-color: #000000; /* Invert pure white areas (optional) */
+}
+
+.light-mode *,
+.dark-mode * {
+  transition: all 0.45s ease !important;
+}
+
+body {
+  font-family: "Sora", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* .button1 {
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(#f121bc, #b21783);
+  padding: 5px 15px;
+  border-radius: 0.5em;
+  text-transform: uppercase;
+  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.4),
+    inset -5px -10px 10px #b1147d;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.button2 {
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  color: #d1d0d5;
+  border: 2px solid #443b78;
+  border-radius: 0.5em;
+  padding: 5px 15px;
+  margin: 0px 5px;
+} */
+
+.btn {
+  padding: 12px 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  background-color: var(--prime-color);
+  border: 0px solid var(--prime-color);
+  border-radius: 10px 0;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.btn svg {
+  margin-left: 8px;
+}
+
+.max_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1250px;
+  align-items: center;
+}
+
+.section_container {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.primery_heading {
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--sendory-color);
+  margin-bottom: 10px;
+}
+
+/* wordpress */
+
+/* li#menu-item-8 a::before {
+  content: "";
+  background-color: #00000000;
+  background-image: url(http://localhost/wordpress/wp-content/uploads/2025/01/home.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: 15px !important;
+  position: absolute;
+  top: 16px;
+  left: 6px;
+  display: inline-block !important;
+  width: 18px !important;
+  height: 18px !important;
+  color: #000 !important;
+  background-size: auto !important;
+  visibility: visible;
+  opacity: 1;
+}
+
+li#menu-item-8 a.hfe-menu-item:hover:before {
+  background-repeat: no-repeat !important;
+  background-position: center center;
+  background: url(http://localhost/wordpress/wp-content/uploads/2025/01/home-1.svg);
+  background-size: auto !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+li#menu-item-8 a.hfe-menu-item::after {
+  left: 0;
+  height: 0;
+  content: "";
+  z-index: -1;
+  width: 100%;
+  position: absolute;
+  background: #13a1d2;
+  border-radius: 3px;
+}
+
+li#menu-item-8 a.hfe-menu-item:hover:after {
+  height: 30px;
+} */
+
+@media (max-width: 1380px) {
+  .section_container {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .section_container {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 550px) {
+  .section_container {
+    padding: 20px;
+  }
+}

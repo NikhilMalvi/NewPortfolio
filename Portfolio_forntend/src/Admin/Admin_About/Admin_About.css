@@ -1,0 +1,170 @@
+/* Wrapper */
+.aboutAdminWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 60px;
+  background: #dce9ff;
+}
+
+/* Main Container */
+.aboutAdminContainer {
+  width: 100%;
+  background: #fff;
+  scrollbar-width: none;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+.aboutAdminHeading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: #022b63;
+}
+
+/* Section */
+.aboutSection {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.aboutSectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  border-left: 4px solid var(--prime-color);
+  padding-left: 12px;
+  color: #022b63;
+}
+
+/* Field Wrapper */
+.aboutRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.aboutLabel {
+  font-weight: 600;
+  font-size: 14.5px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Inputs / Text fields */
+.aboutInput {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  transition: 0.25s;
+  font-size: 15px;
+}
+
+.aboutInput:focus {
+  border-color: var(--prime-color);
+  box-shadow: 0 0 6px rgba(0, 122, 255, 0.18);
+  outline: none;
+}
+
+/* Quill Editor Styling */
+.aboutQuillWrapper {
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+  min-height: 150px;
+}
+.aboutQuillWrapper .ql-container {
+  border: none !important;
+}
+
+/* Image Upload Layout */
+.aboutUploadRow {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 22px;
+}
+
+.aboutUploadBox {
+  width: 200px;
+  height: 160px;
+  border: 2px dashed #bfbfbf;
+  border-radius: 12px;
+  background: #f7f7f7;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.25s ease;
+}
+
+.aboutUploadBox:hover {
+  border-color: var(--prime-color);
+  background: #eef7ff;
+}
+
+.aboutUploadPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.aboutPlaceholder {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+/* Counter layout FIXED */
+.aboutCounterRow {
+  display: flex;
+  gap: 12px;
+}
+
+.aboutCounterRow input {
+  width: 110px;
+  text-align: center;
+}
+
+/* Submit Button */
+.aboutSaveBtn {
+  background: var(--prime-color);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  margin-top: 15px;
+  transition: 0.25s;
+}
+
+.aboutSaveBtn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .aboutUploadRow {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutUploadBox {
+    width: 100%;
+  }
+
+  .aboutCounterRow input {
+    width: 100%;
+  }
+}

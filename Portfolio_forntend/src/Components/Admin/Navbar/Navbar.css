@@ -1,0 +1,20 @@
+.admin_navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  background: color-mix(in srgb, var(--prime-color) 5%, transparent);
+  padding: 20px;
+}
+
+.admin_logo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+}
+
+.admin_logo img {
+  max-width: 80px;
+}

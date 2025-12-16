@@ -1,0 +1,256 @@
+.galleryWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background: #dce9ff;
+}
+
+.galleryContainer {
+  width: 100%;
+  max-width: 1100px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  height: 100%;
+  background: #fff;
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+}
+
+.galleryHeading {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 22px;
+}
+
+.newItemBtn {
+  width: 100%;
+  background: var(--prime-color);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Add Item Card */
+.pendingCard {
+  background: #f5f7ff;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.uploadBox {
+  width: 160px;
+  height: 110px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uploadPlaceholder p {
+  font-size: 13px;
+  color: gray;
+}
+
+.galleryInput {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.saveItemBtn {
+  background: #28a745;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Saved Table */
+.sectionTitle {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  border-left: 4px solid var(--prime-color);
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.galleryTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.galleryTable th {
+  background: var(--prime-color);
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.galleryTable td {
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tableImg {
+  width: 90px;
+  height: 65px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.deleteBtn {
+  background: #ff4b4b;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.galleryedit {
+  padding: 8px 12px !important;
+  border-radius: 10px !important;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 10px;
+  color: gray;
+}
+
+/* Grid layout for saved items */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.galleryCard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardImageWrap {
+  width: 100%;
+  height: 140px;
+  background: #f5f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cardImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 16px;
+}
+
+.cardAlt {
+  color: #666;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  color: #666;
+}
+
+.cardActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  align-items: center;
+}
+
+.copyBtn {
+  background: #eee;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.editInput {
+  width: 120px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 4px;
+}
+
+.actionBtns {
+  display: flex;
+  gap: 6px;
+}
+
+.editBtn {
+  background: #007bff;
+  color: white;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 6px;
+}
+
+.saveBtnSmall {
+  background: #28a745;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+.cancelBtn {
+  background: #999;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+}
