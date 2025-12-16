@@ -23,7 +23,7 @@ const Home = () => {
 
   const fetchTech = async () => {
     try {
-      const { data } = await axios.get("/api/technology/all");
+      const { data } = await axios.get(`${VITE_BASE_URL}/api/technology/all`);
       if (data.success) {
         setTechStack(data.technology);
       } else {
