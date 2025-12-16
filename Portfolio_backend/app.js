@@ -17,7 +17,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://new-portfolio-theta-eight.vercel.app",
+      "https://new-portfolio-teal-five.vercel.app",
       "http://localhost:5173",
     ],
     credentials: true,
