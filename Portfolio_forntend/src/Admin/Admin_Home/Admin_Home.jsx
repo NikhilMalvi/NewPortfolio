@@ -37,17 +37,9 @@ const Admin_Home = () => {
           setHomeCTA(home.homeCTA || "");
           setHomeCTALink(home.homeCTALink || "");
 
-          setPreviewLight(
-            home.lightImage
-              ? `${VITE_BASE_URL}/uploads/gallery/${home.lightImage}`
-              : null
-          );
+          setPreviewLight(home.lightImageUrl || null);
 
-          setPreviewDark(
-            home.darkImage
-              ? `${VITE_BASE_URL}/uploads/gallery/${home.darkImage}`
-              : null
-          );
+          setPreviewDark(home.darkImageUrl || null);
         }
       } catch (err) {
         console.error(err);
@@ -69,17 +61,8 @@ const Admin_Home = () => {
       formData.append("homeCTA", homeCTA);
       formData.append("homeCTALink", homeCTALink);
 
-      const lightFilename =
-        previewLight && previewLight.startsWith(VITE_BASE_URL)
-          ? previewLight.split("/").pop()
-          : null;
-      const darkFilename =
-        previewDark && previewDark.startsWith(VITE_BASE_URL)
-          ? previewDark.split("/").pop()
-          : null;
-
-      if (lightFilename) formData.append("lightImage", lightFilename);
-      if (darkFilename) formData.append("darkImage", darkFilename);
+      if (previewLight) formData.append("lightImageUrl", previewLight);
+      if (previewDark) formData.append("darkImageUrl", previewDark);
 
       const response = await axios.put(`/api/home/update-home`, formData);
       console.log(previewLight, previewDark);
@@ -94,16 +77,8 @@ const Admin_Home = () => {
       setHomeCTA(updated.homeCTA);
       setHomeCTALink(updated.homeCTALink);
 
-      setPreviewLight(
-        updated.lightImage
-          ? `${VITE_BASE_URL}/uploads/gallery/${updated.lightImage}`
-          : LightImage
-      );
-      setPreviewDark(
-        updated.darkImage
-          ? `${VITE_BASE_URL}/uploads/gallery/${updated.darkImage}`
-          : DarkImage
-      );
+      setPreviewLight(updated.lightImageUrl || LightImage);
+      setPreviewDark(updated.darkImageUrl || DarkImage);
 
       toast.success(response.data.message);
       // toast.success("Home updated successfully!");
@@ -113,12 +88,7 @@ const Admin_Home = () => {
   };
 
   const handleMediaSelect = (item) => {
-    const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
-    const imageUrl = item.fileType?.startsWith("image/")
-      ? `${VITE_BASE_URL}/uploads/gallery/${item.fileName}`
-      : item.image
-      ? `${VITE_BASE_URL}/uploads/gallery/${item.image}`
-      : item.url || "";
+    const imageUrl = item.imageUrl;
 
     if (currentImageSlot === "light") setPreviewLight(imageUrl);
     else if (currentImageSlot === "dark") setPreviewDark(imageUrl);

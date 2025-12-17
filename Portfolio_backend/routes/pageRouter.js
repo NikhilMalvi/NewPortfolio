@@ -12,7 +12,7 @@ import {
   updateHome,
   updateProfile,
 } from "../controllers/pagesControllers.js";
-import { upload } from "../middleware/upload.js";
+import upload from "../middleware/upload.js";
 import { protect } from "../middleware/auth.js";
 import { numberOfProjects } from "../controllers/projectControllers.js";
 
@@ -21,19 +21,7 @@ const pageRouter = express.Router();
 /* -------- Home Routes -------- */
 pageRouter.get("/home/all", getHome);
 
-pageRouter.put(
-  "/home/update-home",
-  protect,
-  (req, res, next) => {
-    req.uploadFolder = "gallery";
-    next();
-  },
-  upload.fields([
-    { name: "lightImage", maxCount: 1 },
-    { name: "darkImage", maxCount: 1 },
-  ]),
-  updateHome
-);
+pageRouter.put("/home/update-home", protect, upload.none(), updateHome);
 
 /* -------- About Routes -------- */
 pageRouter.get("/about/all", getAbout);

@@ -7,20 +7,11 @@ import {
   getGalleryById,
 } from "../controllers/galleryControllers.js";
 import { protect } from "../middleware/auth.js";
-import { upload } from "../middleware/upload.js";
+import upload from "../middleware/upload.js";
 
 const galleryRouter = express.Router();
 
-galleryRouter.post(
-  "/add",
-  protect,
-  (req, res, next) => {
-    req.uploadFolder = "gallery"; // store images in /uploads/gallery
-    next();
-  },
-  upload.single("file"),
-  AddGalleryItem
-);
+galleryRouter.post("/add", protect, upload.single("file"), AddGalleryItem);
 galleryRouter.get("/all", getAllGalleryItems);
 galleryRouter.put(
   "/edit-file/:id",

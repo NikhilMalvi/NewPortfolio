@@ -2,15 +2,14 @@ import mongoose from "mongoose";
 import Gallery from "../models/gallery.js";
 import sharp from "sharp"; // used to read image width/height
 import gallery from "../models/gallery.js";
-import path from "path";
-import fs from "fs";
+import imagekit from "../config/imagekit.js";
 
 export const AddGalleryItem = async (req, res) => {
   try {
     const file = req.file;
     const { title, altText, category } = req.body;
 
-    // Validate file
+    /* -------------------- VALIDATION -------------------- */
     if (!file) {
       return res.status(400).json({
         success: false,
@@ -18,31 +17,45 @@ export const AddGalleryItem = async (req, res) => {
       });
     }
 
-    // Metadata defaults
+    /* -------------------- IMAGE METADATA -------------------- */
     let width = null;
     let height = null;
 
-    // If file is image → extract width & height
     if (file.mimetype.startsWith("image/")) {
       try {
-        const imageInfo = await sharp(file.path).metadata();
-        width = imageInfo.width;
-        height = imageInfo.height;
+        const meta = await sharp(file.buffer).metadata();
+        width = meta.width;
+        height = meta.height;
       } catch (err) {
         console.log("Image metadata error:", err.message);
       }
     }
 
-    // File size (KB or MB)
-    const sizeKB = (file.size / 1024).toFixed(1) + " KB";
+    /* -------------------- FILE SIZE -------------------- */
+    const sizeKB =
+      file.size > 1024 * 1024
+        ? (file.size / (1024 * 1024)).toFixed(2) + " MB"
+        : (file.size / 1024).toFixed(1) + " KB";
 
-    // Save to database
+    /* -------------------- UPLOAD TO IMAGEKIT -------------------- */
+    const uploadResponse = await imagekit.upload({
+      file: file.buffer, // 👈 buffer, NOT path
+      fileName: file.originalname,
+      folder: "/uploads/gallery",
+      useUniqueFileName: true,
+    });
+
+    /* -------------------- SAVE TO DATABASE -------------------- */
     const newItem = await Gallery.create({
-      fileName: file.filename,
-      originalName: file.originalname,
       title,
       altText,
       category: category || "general",
+
+      // ImageKit data
+      imageUrl: uploadResponse.url,
+      fileId: uploadResponse.fileId,
+
+      // Metadata
       fileType: file.mimetype,
       fileSize: sizeKB,
       width,
@@ -56,7 +69,10 @@ export const AddGalleryItem = async (req, res) => {
     });
   } catch (error) {
     console.error("AddGalleryItem Error:", error.message);
-    res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({
+      success: false,
+      message: "Failed to upload gallery item",
+    });
   }
 };
 
@@ -159,22 +175,13 @@ export const deleteGalleryById = async (req, res) => {
         .json({ success: false, message: "Gallery item not found" });
     }
 
-    // Build file path
-    const filePath = path.join(
-      process.cwd(),
-      "uploads",
-      "gallery",
-      item.fileName // Your schema uses fileName
-    );
-
-    // Delete file if exists
-    if (fs.existsSync(filePath)) {
-      fs.unlink(filePath, (err) => {
-        if (err) console.log("❌ Error deleting file:", err.message);
-        else console.log("✔ File deleted:", filePath);
-      });
-    } else {
-      console.log("⚠ File not found on disk:", filePath);
+    // Delete from ImageKit
+    try {
+      await imagekit.deleteFile(item.fileId);
+      console.log("✔ File deleted from ImageKit:", item.fileId);
+    } catch (err) {
+      console.log("❌ Error deleting file from ImageKit:", err.message);
+      // Continue to delete from DB even if ImageKit delete fails
     }
 
     // Delete DB entry

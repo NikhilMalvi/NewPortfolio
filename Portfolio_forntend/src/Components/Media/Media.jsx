@@ -191,11 +191,7 @@ const Media = ({ isOpen, onClose, onUploadSuccess, accept = "image/*" }) => {
                 {gallery.map((item) => {
                   const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
                   const id = item._id || item.id;
-                  const src = item.fileType?.startsWith("image/")
-                    ? `${VITE_BASE_URL}/uploads/gallery/${item.fileName}`
-                    : item.image
-                    ? `${VITE_BASE_URL}/uploads/gallery/${item.image}`
-                    : "";
+                  const src = item.imageUrl;
 
                   return (
                     <div className="mediaGalleryItem" key={id}>

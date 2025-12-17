@@ -7,8 +7,13 @@ const homeSchema = new mongoose.Schema(
     homeCTA: { type: String, required: true },
     homeCTALink: { type: String, required: true },
 
-    lightImage: { type: String, required: false },
-    darkImage: { type: String, required: false },
+    // Light image
+    lightImageUrl: { type: String },
+    lightImageFileId: { type: String },
+
+    // Dark image
+    darkImageUrl: { type: String },
+    darkImageFileId: { type: String },
   },
   { timestamps: true }
 );

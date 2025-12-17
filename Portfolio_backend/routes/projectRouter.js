@@ -13,7 +13,7 @@ import {
   numberOfProjects,
 } from "../controllers/projectControllers.js";
 import { protect } from "../middleware/auth.js";
-import { upload } from "../middleware/upload.js";
+import upload from "../middleware/upload.js";
 
 const projectRouter = express.Router();
 

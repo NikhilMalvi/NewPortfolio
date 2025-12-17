@@ -2,11 +2,13 @@ import mongoose from "mongoose";
 
 const gallerySchema = new mongoose.Schema(
   {
-    fileName: { type: String, required: true }, // saved filename in uploads
-    originalName: { type: String }, // original upload name
     title: { type: String }, // Optional title
     altText: { type: String }, // Optional alt text
     category: { type: String, default: "general" }, // page name (home/about/project/etc.)
+
+    // ImageKit fields
+    imageUrl: { type: String, required: true },
+    fileId: { type: String, required: true },
 
     fileType: { type: String }, // image/png, application/pdf, etc.
     fileSize: { type: String }, // KB or MB

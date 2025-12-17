@@ -109,9 +109,9 @@ const GalleryManager = () => {
     if (!altText.trim()) return toast.error("ALT text required");
 
     const form = new FormData();
-    form.append("title", editTitle);
-    form.append("altText", editAltText);
-    form.append("category", editCategory);
+    form.append("title", title);
+    form.append("altText", altText);
+    form.append("category", category);
 
     if (fileRef.current?.files?.[0]) {
       form.append("file", fileRef.current.files[0]);
@@ -332,9 +332,7 @@ const GalleryManager = () => {
           <div className="galleryGrid">
             {gallery.map((item) => {
               const id = item._id;
-              const src = item.fileType?.startsWith("image/")
-                ? `${VITE_BASE_URL}/uploads/gallery/${item.fileName}`
-                : null;
+              const src = item.imageUrl;
 
               return (
                 <div className="galleryCard" key={id}>
@@ -342,7 +340,7 @@ const GalleryManager = () => {
                     {src ? (
                       <img src={src} alt={item.altText} />
                     ) : (
-                      <div className="uploadPlaceholder">PDF / File</div>
+                      <div className="uploadPlaceholder">No Image</div>
                     )}
                   </div>
 
@@ -364,9 +362,7 @@ const GalleryManager = () => {
                       <button
                         className="copyBtn"
                         onClick={() =>
-                          navigator.clipboard.writeText(
-                            `${VITE_BASE_URL}/uploads/gallery/${item.fileName}`
-                          )
+                          navigator.clipboard.writeText(item.imageUrl)
                         }
                       >
                         <IoCopy />

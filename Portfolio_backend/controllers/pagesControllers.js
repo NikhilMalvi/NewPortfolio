@@ -4,6 +4,7 @@ import path from "path";
 import mongoose from "mongoose";
 import { saveToGallery } from "./galleryControllers.js";
 import { log } from "console";
+import imagekit from "../config/imagekit.js";
 
 export const getHome = async (req, res) => {
   try {
@@ -35,27 +36,9 @@ export const updateHome = async (req, res) => {
       homeDescription,
       homeCTA,
       homeCTALink,
-      lightImage: bodyLightImage,
-      darkImage: bodyDarkImage,
+      lightImageUrl,
+      darkImageUrl,
     } = req.body;
-
-    const files = req.files || {};
-
-    // Find existing data
-    const existing = await Home.findOne();
-
-    // Decide final image values
-    const finalLightImage =
-      files?.lightImage?.[0]?.filename ||
-      bodyLightImage ||
-      existing?.lightImage ||
-      "";
-
-    const finalDarkImage =
-      files?.darkImage?.[0]?.filename ||
-      bodyDarkImage ||
-      existing?.darkImage ||
-      "";
 
     const updatedHome = await Home.findOneAndUpdate(
       {},
@@ -64,8 +47,8 @@ export const updateHome = async (req, res) => {
         homeDescription,
         homeCTA,
         homeCTALink,
-        lightImage: finalLightImage,
-        darkImage: finalDarkImage,
+        lightImageUrl,
+        darkImageUrl,
       },
       { new: true, upsert: true }
     );
