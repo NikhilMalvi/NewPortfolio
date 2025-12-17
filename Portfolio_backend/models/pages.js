@@ -9,11 +9,9 @@ const homeSchema = new mongoose.Schema(
 
     // Light image
     lightImageUrl: { type: String },
-    lightImageFileId: { type: String },
 
     // Dark image
     darkImageUrl: { type: String },
-    darkImageFileId: { type: String },
   },
   { timestamps: true }
 );

@@ -29,6 +29,9 @@ app.use("/api/project", projectRouter);
 app.use("/uploads", express.static(path.resolve("uploads")));
 app.use("/api/contact", contactRouter);
 app.use("/api/gallery", galleryRouter);
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ alive: true });
+});
 
 app.get("/", (req, res) => res.send("api is working"));
 

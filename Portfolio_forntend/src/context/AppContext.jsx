@@ -86,7 +86,7 @@ export const AppProvider = ({ children }) => {
 
   /* ---------------------- BACKEND WARM-UP (Cold start fix) ---------------------- */
   useEffect(() => {
-    axios.get("/health").catch(() => {});
+    axios.get("/api/health").catch(() => {});
   }, []);
 
   /* ---------------------- MEMOIZED CONTEXT VALUE ---------------------- */
