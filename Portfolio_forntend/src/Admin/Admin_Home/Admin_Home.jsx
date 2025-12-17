@@ -13,6 +13,7 @@ const Admin_Home = () => {
   const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
   const [showMedia, setShowMedia] = useState(false);
   const [currentImageSlot, setCurrentImageSlot] = useState(null); // Track which image is being edited
+  const [isLoading, setIsLoading] = useState(true);
 
   const [homeHeading, setHomeHeading] = useState(" ");
   const [homeDescription, setHomeDescription] = useState("");
@@ -24,6 +25,7 @@ const Admin_Home = () => {
 
   useEffect(() => {
     const fetchHomeData = async () => {
+      setIsLoading(true);
       try {
         const { data } = await axios.get(`${VITE_BASE_URL}/api/home/all`);
 
@@ -49,6 +51,8 @@ const Admin_Home = () => {
         }
       } catch (err) {
         console.error(err);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -125,6 +129,9 @@ const Admin_Home = () => {
 
   return (
     <section className="admin_section">
+      {isLoading && (
+        <div style={{ textAlign: "center", padding: "20px" }}>Loading...</div>
+      )}
       <h2 className="adminHeading">Home Page Settings</h2>
 
       <form onSubmit={handleUpdateHome}>
