@@ -8,10 +8,12 @@ const homeSchema = new mongoose.Schema(
     homeCTALink: { type: String, required: true },
 
     // Light image
-    lightImageUrl: { type: String },
+    lightImageUrl: { type: String, required: true },
+    lightImageFileId: { type: String, required: true },
 
     // Dark image
-    darkImageUrl: { type: String },
+    darkImageUrl: { type: String, required: true },
+    darkImageFileId: { type: String, required: true },
   },
   { timestamps: true }
 );
@@ -28,8 +30,8 @@ const aboutSchema = new mongoose.Schema(
     // SECTION 1
     aboutHeading: { type: String, required: true },
     aboutDescription: { type: String, required: true }, // Quill HTML content
-    lightImage: { type: String, required: true }, // filename or Cloudinary URL
-    darkImage: { type: String, required: true },
+    lightImageUrl: { type: String, required: true }, // filename or Cloudinary URL
+    darkImageUrl: { type: String, required: true },
 
     // SECTION 2
     counters: [counterSchema],
@@ -37,8 +39,8 @@ const aboutSchema = new mongoose.Schema(
     // SECTION 3
     section3Title: { type: String, required: true },
     section3Content: { type: String, required: true }, // Quill text
-    section3LightImg: { type: String, required: true },
-    section3DarkImg: { type: String, required: true },
+    section3LightImgUrl: { type: String, required: true },
+    section3DarkImgUrl: { type: String, required: true },
   },
   { timestamps: true }
 );

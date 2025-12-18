@@ -59,12 +59,12 @@ const Home = () => {
     const updateLogo = () => {
       setLogo(
         document.body.classList.contains("light-mode")
-          ? home.lightImage || Home_light_img
-          : home.darkImage || Home_dark_img
+          ? home.lightImageUrl || Home_light_img
+          : home.darkImageUrl || Home_dark_img
       );
     };
 
-    if (home.lightImage || home.darkImage) {
+    if (home.lightImageUrl || home.darkImageUrl) {
       updateLogo();
     }
 
@@ -87,21 +87,18 @@ const Home = () => {
         <section className="section_container row1">
           <div className="max_container">
             <div className="col1">
-              <h1>{home.homeHeading} || Hello, I'm Nikhil Malviya</h1>
+              <h1>{home.homeHeading || "Hello, I'm Nikhil Malviya"}</h1>
               <h2>
-                {home.homeDescription} || A MERN Stack & Wordpress(Front-end)
-                Developer
+                {home.homeDescription ||
+                  "A MERN Stack & Wordpress(Front-end) Developer"}
               </h2>
-              <Link className="btn" to={`/${home.homeCTALink} || "/contact"`}>
-                {home.homeCTA} || "Contact us"
+              <Link className="btn" to={`/${home.homeCTALink || "/contact"}`}>
+                {home.homeCTA || "Contact us"}
                 <FiArrowRight />
               </Link>
             </div>
             <div className="col2">
-              <img
-                src={`${VITE_BASE_URL}/uploads/gallery/${logo}` || logo}
-                alt=""
-              />
+              <img src={logo} alt="" />
             </div>
           </div>
         </section>

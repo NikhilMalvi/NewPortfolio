@@ -94,76 +94,24 @@ export const updateAbout = async (req, res) => {
     const {
       aboutHeading,
       aboutDescription,
-      lightImage: bodyLightImage,
-      darkImage: bodyDarkImage,
+      lightImageUrl,
+      darkImageUrl,
       counters,
       section3Title,
       section3Content,
-      section3LightImg: bodySection3LightImg,
-      section3DarkImg: bodySection3DarkImg,
+      section3LightImgUrl,
+      section3DarkImgUrl,
     } = req.body;
 
     const files = req.files || {};
 
     const existing = await About.findOne();
 
-    const finalLightImage =
-      files?.lightImage?.[0]?.filename ||
-      bodyLightImage ||
-      existing?.lightImage ||
-      "";
-
-    const finalDarkImage =
-      files?.darkImage?.[0]?.filename ||
-      bodyDarkImage ||
-      existing?.darkImage ||
-      "";
-
-    const finalSection3LightImg =
-      files?.section3LightImg?.[0]?.filename ||
-      bodySection3LightImg ||
-      existing?.section3LightImg ||
-      "";
-
-    const finalSection3DarkImg =
-      files?.section3DarkImg?.[0]?.filename ||
-      bodySection3DarkImg ||
-      existing?.section3DarkImg ||
-      "";
+    if (!existing) {
+      console.log("No existing About document found.");
+    }
 
     // FIXED: await the existing document
-
-    if (files?.lightImage?.[0]) {
-      await saveToGallery({
-        file: files.lightImage[0],
-        title: "About Light Image",
-        category: "about",
-      });
-    }
-
-    if (files?.darkImage?.[0]) {
-      await saveToGallery({
-        file: files.darkImage[0],
-        title: "About Dark Image",
-        category: "about",
-      });
-    }
-
-    if (files?.section3LightImg?.[0]) {
-      await saveToGallery({
-        file: files.section3LightImg[0],
-        title: "About Section 3 Light",
-        category: "about",
-      });
-    }
-
-    if (files?.section3DarkImg?.[0]) {
-      await saveToGallery({
-        file: files.section3DarkImg[0],
-        title: "About Section 3 Dark",
-        category: "about",
-      });
-    }
 
     const updatedData = {
       aboutHeading,
@@ -173,10 +121,10 @@ export const updateAbout = async (req, res) => {
       section3Content,
 
       // Proper image fallback logic
-      lightImage: finalLightImage,
-      darkImage: finalDarkImage,
-      section3LightImg: finalSection3LightImg,
-      section3DarkImg: finalSection3DarkImg,
+      lightImageUrl,
+      darkImageUrl,
+      section3LightImgUrl,
+      section3DarkImgUrl,
     };
 
     const updatedAbout = await About.findOneAndUpdate({}, updatedData, {
