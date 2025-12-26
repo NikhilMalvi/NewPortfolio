@@ -23,7 +23,9 @@ const Navbar = () => {
   useEffect(() => {
     const updateLogo = () => {
       setLogo(
-        document.body.classList.contains("light-mode") ? Light_logo : Dark_logo
+        document.body.classList.contains("light-mode")
+          ? `https://ik.imagekit.io/elnldr19u/uploads/gallery/Light_logo_eYX832kue.png`
+          : `https://ik.imagekit.io/elnldr19u/uploads/gallery/Dark_logo_VpiM4MHQV.png`
       );
     };
 

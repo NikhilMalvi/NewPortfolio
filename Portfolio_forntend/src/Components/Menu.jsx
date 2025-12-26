@@ -15,8 +15,8 @@ const Menu = ({ openmenu, close }) => {
     const updateLogo = () => {
       setLogo(
         document.body.classList.contains("light-mode")
-          ? `${VITE_BASE_URL}/uploads/gallery/1765806137450-Light_logo.png`
-          : `${VITE_BASE_URL}/uploads/gallery/1765806153315-Dark_logo.png`
+          ? `https://ik.imagekit.io/elnldr19u/uploads/gallery/Light_logo_eYX832kue.png`
+          : `https://ik.imagekit.io/elnldr19u/uploads/gallery/Dark_logo_VpiM4MHQV.png`
       );
     };
 
