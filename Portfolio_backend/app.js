@@ -16,7 +16,10 @@ const app = express();
 // app.use(helmet());
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: [
+      process.env.FRONTEND_URL,
+      "https://new-portfolio-chi-rose.vercel.app",
+    ],
     credentials: true,
   })
 );
