@@ -28,9 +28,8 @@ const AddTechStack = ({ editing }) => {
 
         if (data.success) {
           setTechName(data.technology.techName);
-          setExistingImg(
-            `${VITE_BASE_URL}/uploads/gallery/${data.technology.techImg}`
-          );
+          setExistingImg(data.technology.techImgUrl || null);
+          setTechImg(data.technology.techImgUrl || null);
         } else {
           toast.error(data.message);
         }
@@ -61,14 +60,9 @@ const AddTechStack = ({ editing }) => {
     try {
       const formData = new FormData();
       formData.append("techName", techName);
-      if (techInputRef.current?.files?.[0]) {
-        formData.append("techImg", techInputRef.current.files[0]);
-      }
 
       // ✅ CASE 2: selected from gallery
-      else if (galleryImage) {
-        formData.append("techImg", galleryImage);
-      }
+      formData.append("techImgUrl", techImg);
 
       let res;
 
@@ -88,7 +82,7 @@ const AddTechStack = ({ editing }) => {
           setTechName("");
           setTechImg(null);
           setExistingImg(null);
-          techInputRef.current.value = null;
+          // techInputRef.current.value = null;
         }
       } else {
         toast.error(res.data.message);
@@ -102,12 +96,11 @@ const AddTechStack = ({ editing }) => {
 
   const handleMediaSelect = (item) => {
     // item.fileName comes from gallery schema
-    setGalleryImage(item.fileName);
+    // setGalleryImage(item.fileName);
+    const imageUrl = item.imageUrl;
 
     // Preview URL (only for UI)
-    setTechImg(
-      `${import.meta.env.VITE_BASE_URL}/uploads/gallery/${item.fileName}`
-    );
+    setTechImg(imageUrl);
   };
 
   return (

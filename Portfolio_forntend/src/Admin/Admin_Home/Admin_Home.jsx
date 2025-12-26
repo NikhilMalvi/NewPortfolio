@@ -37,9 +37,9 @@ const Admin_Home = () => {
           setHomeCTA(home.homeCTA || "");
           setHomeCTALink(home.homeCTALink || "");
 
-          setPreviewLight(home.lightImageUrl || null);
+          setPreviewLight(home.lightImageUrl || LightImage);
 
-          setPreviewDark(home.darkImageUrl || null);
+          setPreviewDark(home.darkImageUrl || DarkImage);
         }
       } catch (err) {
         console.error(err);
@@ -65,9 +65,9 @@ const Admin_Home = () => {
       if (previewDark) formData.append("darkImageUrl", previewDark);
 
       const response = await axios.put(`/api/home/update-home`, formData);
-      console.log(previewLight, previewDark);
+      // console.log(previewLight, previewDark);
 
-      console.log(response.data.data);
+      // console.log(response.data.data);
 
       const updated = response.data.data;
 
@@ -162,20 +162,11 @@ const Admin_Home = () => {
                   setShowMedia(true);
                 }}
               >
-                {previewLight &&
-                previewLight !== LightImage &&
-                previewLight.startsWith("http") ? (
-                  <img
-                    src={previewLight}
-                    className="uploadPreview"
-                    alt="Light Preview"
-                  />
-                ) : (
-                  <div className="uploadPlaceholder">
-                    <IoCloudUploadOutline size={45} />
-                    <p>Upload</p>
-                  </div>
-                )}
+                <img
+                  src={previewLight || LightImage}
+                  className="uploadPreview"
+                  alt="Light Preview"
+                />
               </div>
             </div>
 
@@ -190,20 +181,11 @@ const Admin_Home = () => {
                   setShowMedia(true);
                 }}
               >
-                {previewDark &&
-                previewDark !== DarkImage &&
-                previewDark.startsWith("http") ? (
-                  <img
-                    src={previewDark}
-                    className="uploadPreview"
-                    alt="Dark Preview"
-                  />
-                ) : (
-                  <div className="uploadPlaceholder">
-                    <IoCloudUploadOutline size={45} />
-                    <p>Upload</p>
-                  </div>
-                )}
+                <img
+                  src={previewDark || DarkImage}
+                  className="uploadPreview"
+                  alt="Dark Preview"
+                />
               </div>
             </div>
           </div>

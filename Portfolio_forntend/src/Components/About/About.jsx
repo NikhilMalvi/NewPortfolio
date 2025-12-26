@@ -56,15 +56,7 @@ const About = () => {
           <div className="max_container">
             <div className="col1">
               <img
-                src={
-                  isLightMode
-                    ? about.lightImage
-                      ? `${VITE_BASE_URL}/uploads/gallery/${about.lightImage}`
-                      : About_light_img
-                    : about.darkImage
-                    ? `${VITE_BASE_URL}/uploads/gallery/${about.darkImage}`
-                    : About_dark_img
-                }
+                src={isLightMode ? about.lightImageUrl : about.darkImageUrl}
                 alt="About"
               />
             </div>
@@ -105,12 +97,8 @@ const About = () => {
               <img
                 src={
                   isLightMode
-                    ? about.section3LightImg
-                      ? `${VITE_BASE_URL}/uploads/gallery/${about.section3LightImg}`
-                      : Education_light
-                    : about.section3DarkImg
-                    ? `${VITE_BASE_URL}/uploads/gallery/${about.section3DarkImg}`
-                    : Education_dark
+                    ? about.section3LightImgUrl
+                    : about.section3DarkImgUrl
                 }
                 alt="Education"
               />

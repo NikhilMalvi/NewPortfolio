@@ -264,14 +264,14 @@ export const addProject = async (req, res) => {
       projectSkills,
       projectWebsite,
       projectLocation,
-      ProjectImage: bodyProjectImage,
+      projectImageUrl,
     } = req.body;
 
     // const projectImage = req.file?.filename;
 
-    const projectImage = req.file?.filename || bodyProjectImage;
+    // const projectImage = req.file?.filename || bodyProjectImage;
 
-    if (!projectImage || typeof projectImage !== "string") {
+    if (!projectImageUrl || typeof projectImageUrl !== "string") {
       return res.status(400).json({
         success: false,
         message: "Project image is required",
@@ -292,12 +292,12 @@ export const addProject = async (req, res) => {
       });
     }
 
-    if (!projectImage) {
-      return res.status(400).json({
-        success: false,
-        message: "Project image is required",
-      });
-    }
+    // if (!projectImage) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "Project image is required",
+    //   });
+    // }
 
     // 🧠 Convert skills into array
     let parsedSkills = [];
@@ -332,7 +332,7 @@ export const addProject = async (req, res) => {
       projectSkills: parsedSkills,
       projectWebsite,
       projectLocation,
-      projectImage,
+      projectImageUrl,
     });
 
     return res.status(201).json({
@@ -359,10 +359,10 @@ export const editProjectById = async (req, res) => {
       projectSkills,
       projectWebsite,
       projectLocation,
-      ProjectImage: bodyProjectImage,
+      projectImageUrl,
     } = req.body;
 
-    const projectImage = req.file?.filename || bodyProjectImage;
+    // const projectImage = req.file?.filename || bodyProjectImage;
 
     // Find project
     const existing = await Project.findById(id);
@@ -401,17 +401,17 @@ export const editProjectById = async (req, res) => {
       existing.projectSkills = parsedSkills;
     }
 
-    existing.projectImage = projectImage || existing.projectImage;
+    existing.projectImageUrl = projectImageUrl || existing.projectImageUrl;
 
-    if (projectImage) {
-      await saveToGallery({
-        file: req.file,
-        title: projectTitle || existing.projectTitle,
-        category: "project",
-      });
+    // if (projectImageUrl) {
+    //   await saveToGallery({
+    //     file: req.file,
+    //     title: projectTitle || existing.projectTitle,
+    //     category: "project",
+    //   });
 
-      existing.projectImage = projectImage;
-    }
+    //   existing.projectImageUrl = projectImageUrl;
+    // }
     await existing.save();
 
     return res.json({

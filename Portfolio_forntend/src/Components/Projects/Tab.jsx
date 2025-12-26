@@ -93,10 +93,7 @@ const Tab = ({ project_data }) => {
                 }
                 key={mainData._id}
               >
-                <img
-                  src={`${VITE_BASE_URL}/uploads/gallery/${mainData.projectImage}`}
-                  alt=""
-                />
+                <img src={mainData.projectImageUrl} alt="" />
                 <div className="card_data">
                   <h1>{mainData.projectTitle}</h1>
                   <div className="list_icon">

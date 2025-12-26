@@ -11,7 +11,7 @@ const skillSchema = new mongoose.Schema(
 
 const projectSchema = new mongoose.Schema(
   {
-    projectImage: { type: String, require: true },
+    projectImageUrl: { type: String, require: true },
     projectTitle: { type: String, require: true },
     projectDescription: { type: String, require: true },
     projectTools: { type: String, require: true },

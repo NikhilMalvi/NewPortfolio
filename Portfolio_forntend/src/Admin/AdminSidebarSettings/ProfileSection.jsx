@@ -28,14 +28,9 @@ const ProfileSection = () => {
           setDesignation(profile.designation || "");
           setAboutMe(profile.aboutme || "");
           setAboutLink(profile.aboutLink || "");
-          if (profile.profileImg) {
-            setProfileImg(
-              `${VITE_BASE_URL}/uploads/gallery/${profile.profileImg}`
-            );
-            setProfileImgName(profile.profileImg);
-          } else {
-            setProfileImg(profileImg);
-            setProfileImgName(null);
+          if (profile.profileImgUrl) {
+            setProfileImg(profile.profileImgUrl || profile);
+            setProfileImgName(profile.profileImgUrl || null);
           }
         }
       } catch (error) {
@@ -55,13 +50,8 @@ const ProfileSection = () => {
     formData.append("aboutme", aboutme);
     formData.append("aboutLink", aboutLink);
 
-    const profileImgFile =
-      profileImg && profileImg.startsWith(VITE_BASE_URL)
-        ? profileImg.split("/").pop()
-        : null;
-
     // send the gallery filename to the server so it can use existing upload
-    formData.append("profileImg", profileImgFile);
+    formData.append("profileImgUrl", profileImg || "");
 
     try {
       const { data } = await axios.put("/api/profile/update-profile", formData);
@@ -72,12 +62,8 @@ const ProfileSection = () => {
       setDesignation(updated.designation);
       setAboutMe(updated.aboutme);
       setAboutLink(updated.aboutLink);
-      setProfileImg(
-        updated.profileImg
-          ? `${VITE_BASE_URL}/uploads/gallery/${updated.profileImg}`
-          : profileImg
-      );
-      setProfileImgName(updated.profileImg || profileImgName);
+      setProfileImg(updated.profileImgUrl || profile);
+      setProfileImgName(updated.profileImgUrl || profileImgName);
       toast.success(data.message);
     } catch (error) {
       toast.error(error.message);
@@ -85,12 +71,7 @@ const ProfileSection = () => {
   };
 
   const handleMediaSelect = (item) => {
-    const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
-    const imageUrl = item.fileType?.startsWith("image/")
-      ? `${VITE_BASE_URL}/uploads/gallery/${item.fileName}`
-      : item.image
-      ? `${VITE_BASE_URL}/uploads/gallery/${item.image}`
-      : item.url || "";
+    const imageUrl = item.imageUrl;
 
     if (currentImageSlot === "profileImg") setProfileImg(imageUrl);
 

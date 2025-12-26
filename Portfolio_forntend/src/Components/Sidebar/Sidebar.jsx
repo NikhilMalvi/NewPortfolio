@@ -34,10 +34,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="profile">
-        <img
-          src={`${VITE_BASE_URL}/uploads/gallery/${profile.profileImg}`}
-          alt=""
-        />
+        <img src={profile.profileImgUrl || profile_img} alt="" />
         <h1 className="proflie_name">{profile.profileName}</h1>
         <h2>{profile.designation}</h2>
         <div className="about_button">

@@ -47,7 +47,7 @@ const aboutSchema = new mongoose.Schema(
 
 const profileSchema = new mongoose.Schema(
   {
-    profileImg: { type: String, require: true },
+    profileImgUrl: { type: String, require: true },
     profileName: { type: String, require: true },
     designation: { type: String, require: true },
     aboutme: { type: String, require: true },
@@ -58,7 +58,7 @@ const profileSchema = new mongoose.Schema(
 
 const techSchema = new mongoose.Schema(
   {
-    techImg: { type: String, require: true },
+    techImgUrl: { type: String, require: true },
     techName: { type: String, require: true },
   },
   { timestamps: true }

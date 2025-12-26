@@ -5,6 +5,7 @@ import { useAppContext } from "../../context/AppContext";
 import "./Dashboard.css";
 import TableOfProject from "../../Components/Admin/TableOfProject/TableOfProject";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const [countprojects, setCountprojects] = useState();

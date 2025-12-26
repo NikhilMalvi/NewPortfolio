@@ -94,11 +94,7 @@ const GetTechStack = () => {
               {filteredTech().map((tech, index) => (
                 <tr key={index}>
                   <td className="techImageBox">
-                    <img
-                      src={`${VITE_BASE_URL}/uploads/gallery/${tech.techImg}`}
-                      alt=""
-                      className="techImg"
-                    />
+                    <img src={tech.techImgUrl} alt="" className="techImg" />
                   </td>
                   <td>{tech.techName}</td>
                   <td className="btnTechBox">

@@ -103,7 +103,7 @@ export const updateAbout = async (req, res) => {
       section3DarkImgUrl,
     } = req.body;
 
-    const files = req.files || {};
+    console.log(req.body);
 
     const existing = await About.findOne();
 
@@ -164,29 +164,19 @@ export const getProfile = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
   try {
-    const {
-      profileName,
-      designation,
-      aboutme,
-      aboutLink,
-      profileImg: bodyProfileImg,
-    } = req.body;
+    const { profileName, designation, aboutme, aboutLink, profileImgUrl } =
+      req.body;
 
-    const files = req.files || {};
+    // const files = req.files || {};
 
-    const existing = await Profile.findOne();
-    const finalProfileImg =
-      files?.profileImg?.[0]?.filename ||
-      bodyProfileImg ||
-      existing?.profileImg ||
-      "";
+    // const existing = await Profile.findOne();
 
     const updatedData = {
       profileName,
       designation,
       aboutme,
       aboutLink,
-      profileImg: finalProfileImg,
+      profileImgUrl,
     };
 
     const updateProfile = await Profile.findOneAndUpdate({}, updatedData, {
@@ -211,10 +201,10 @@ export const updateProfile = async (req, res) => {
 
 export const addTechnology = async (req, res) => {
   try {
-    const { techName, techImg: bodyTechImg } = req.body;
+    const { techName, techImgUrl } = req.body;
 
     // For single uploaded file use req.file instead of req.files
-    const techImg = req.file?.filename || bodyTechImg;
+    // const techImg = req.file?.filename || bodyTechImg;
 
     // Validate required fields
     if (!techName || techName.trim() === "") {
@@ -224,7 +214,7 @@ export const addTechnology = async (req, res) => {
       });
     }
 
-    if (!techImg) {
+    if (!techImgUrl || techImgUrl.trim() === "") {
       return res.status(400).json({
         success: false,
         message: "Technology image is required",
@@ -233,7 +223,7 @@ export const addTechnology = async (req, res) => {
 
     // Save to database
     const technology = await Technology.create({
-      techImg,
+      techImgUrl,
       techName,
     });
 
@@ -255,10 +245,8 @@ export const addTechnology = async (req, res) => {
 export const editTechnology = async (req, res) => {
   try {
     const { id } = req.params; // Fix: req.params not req.parse
-    const { techName, techImg: bodyTechImg } = req.body;
+    const { techName, techImgUrl } = req.body;
 
-    const techImg = req.file?.filename || bodyTechImg;
-    const newImage = techImg || null;
     // Check if record exists
     const existingTech = await Technology.findById(id);
     if (!existingTech) {
@@ -271,8 +259,8 @@ export const editTechnology = async (req, res) => {
     existingTech.techName = techName || existingTech.techName;
 
     // Only replace image if user uploaded a new one
-    if (newImage) {
-      existingTech.techImg = newImage;
+    if (techImgUrl) {
+      existingTech.techImgUrl = techImgUrl;
     }
 
     await existingTech.save();

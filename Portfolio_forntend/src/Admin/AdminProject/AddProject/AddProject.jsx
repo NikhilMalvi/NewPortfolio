@@ -69,9 +69,7 @@ const AddProject = ({ editing }) => {
           }
 
           setProjectDescription(p.projectDescription);
-          setProjectImage(
-            `${import.meta.env.VITE_BASE_URL}/uploads/gallery/${p.projectImage}`
-          );
+          setProjectImage(p.projectImageUrl);
         }
       } catch {
         toast.error("Error loading project");
@@ -162,14 +160,11 @@ const AddProject = ({ editing }) => {
       formData.append("projectSkills", JSON.stringify(projectSkills));
 
       // ✅ CASE 1: uploaded file
-      if (fileInputRef.current?.files?.[0]) {
-        formData.append("projectImage", fileInputRef.current.files[0]);
+      if (projectImage) {
+        formData.append("projectImageUrl", projectImage);
       }
 
       // ✅ CASE 2: selected from gallery
-      else if (galleryImage) {
-        formData.append("ProjectImage", galleryImage);
-      }
 
       let res;
 
@@ -211,12 +206,11 @@ const AddProject = ({ editing }) => {
 
   const handleMediaSelect = (item) => {
     // item.fileName comes from gallery schema
-    setGalleryImage(item.fileName);
+    // setGalleryImage(item.fileName);
+    const imageUrl = item.imageUrl;
 
     // Preview URL (only for UI)
-    setProjectImage(
-      `${import.meta.env.VITE_BASE_URL}/uploads/gallery/${item.fileName}`
-    );
+    setProjectImage(imageUrl);
   };
 
   return (

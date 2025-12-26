@@ -40,7 +40,7 @@ const TableOfProject = ({
               <tr key={p._id}>
                 <td>
                   <img
-                    src={`${VITE_BASE_URL}/uploads/gallery/${p.projectImage}`}
+                    src={p.projectImageUrl}
                     alt={p.projectTitle}
                     className="tableImg"
                   />

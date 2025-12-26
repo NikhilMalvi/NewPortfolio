@@ -84,11 +84,7 @@ const Imge_slider = () => {
             }
             key={techStack._id}
           >
-            <img
-              src={`${VITE_BASE_URL}/uploads/gallery/${techStack.techImg}`}
-              alt=""
-              className="carousel_img"
-            />
+            <img src={techStack.techImgUrl} alt="" className="carousel_img" />
             <h2>{techStack.techName}</h2>
           </div>
         ))}{" "}

@@ -26,25 +26,16 @@ projectRouter.get("/all", getAllProject);
 projectRouter.post(
   "/add",
   protect,
-  (req, res, next) => {
-    req.uploadFolder = "gallery";
-    next();
-  },
-  upload.single("projectImage"),
+  // (req, res, next) => {
+  //   req.uploadFolder = "gallery";
+  //   next();
+  // },
+  upload.none(),
   addProject
 );
 
 // Edit project
-projectRouter.put(
-  "/edit-project/:id",
-  protect,
-  (req, res, next) => {
-    req.uploadFolder = "gallery";
-    next();
-  },
-  upload.single("projectImage"),
-  editProjectById
-);
+projectRouter.put("/edit-project/:id", protect, upload.none(), editProjectById);
 
 // Delete project
 projectRouter.delete("/delete-project/:id", protect, deleteProjectById);

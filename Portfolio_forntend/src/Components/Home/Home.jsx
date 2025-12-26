@@ -108,10 +108,7 @@ const Home = () => {
             {techStack.map((tech) => (
               <div className="image_boxes" key={tech._id}>
                 <div className="box">
-                  <img
-                    src={`${VITE_BASE_URL}/uploads/gallery/${tech.techImg}`}
-                    alt=""
-                  />
+                  <img src={tech.techImgUrl} alt="" />
                   <h1 className="tech_name">{tech.techName}</h1>
                 </div>
               </div>

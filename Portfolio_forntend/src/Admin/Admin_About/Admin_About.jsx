@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Admin_About.css";
 import "quill/dist/quill.snow.css";
 import Quill from "quill";
-import { IoCloudUploadOutline } from "react-icons/io5";
 import LightImage from "../../img/About_light_img.png";
 import DarkImage from "../../img/About_dark_img.png";
 import EducationLight from "../../img/Education_light.png";
@@ -26,10 +25,10 @@ const Admin_About = () => {
   const [darkImage, setDarkImage] = useState(null);
   const editorRef1 = useRef(null);
   const quillRef1 = useRef(null);
-  const lightInputRef = useRef(null);
-  const darkInputRef = useRef(null);
-  const section3LightRef = useRef(null);
-  const section3DarkRef = useRef(null);
+  // const lightInputRef = useRef(null);
+  // const darkInputRef = useRef(null);
+  // const section3LightRef = useRef(null);
+  // const section3DarkRef = useRef(null);
 
   // Section 2 - counters
   const [counters, setCounters] = useState([]);
@@ -44,12 +43,7 @@ const Admin_About = () => {
 
   // Handle media modal selection for different image slots
   const handleMediaSelect = (item) => {
-    const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
-    const imageUrl = item.fileType?.startsWith("image/")
-      ? `${VITE_BASE_URL}/uploads/gallery/${item.fileName}`
-      : item.image
-      ? `${VITE_BASE_URL}/uploads/gallery/${item.image}`
-      : item.url || "";
+    const imageUrl = item.imageUrl;
 
     if (currentImageSlot === "light") setLightImage(imageUrl);
     else if (currentImageSlot === "dark") setDarkImage(imageUrl);
@@ -85,29 +79,14 @@ const Admin_About = () => {
           const about = data.about;
           setAboutHeading(about.aboutHeading || "");
           setAboutDescription(about.aboutDescription || "");
-          setLightImage(
-            about.lightImage
-              ? `${VITE_BASE_URL}/uploads/gallery/${about.lightImage}`
-              : LightImage
-          );
-          setDarkImage(
-            about.darkImage
-              ? `${VITE_BASE_URL}/uploads/gallery/${about.darkImage}`
-              : DarkImage
-          );
+          setLightImage(about.lightImage || LightImage);
+          setDarkImage(about.darkImage || DarkImage);
           setCounters(about.counters || "");
           setSection3Title(about.section3Title || "");
           setSection3Content(about.section3Content || "");
-          setSection3LightImg(
-            about.section3LightImg
-              ? `${VITE_BASE_URL}/uploads/gallery/${about.section3LightImg}`
-              : EducationLight
-          );
-          setSection3DarkImg(
-            about.section3DarkImg
-              ? `${VITE_BASE_URL}/uploads/gallery/${about.section3DarkImg}`
-              : EducationDark
-          );
+          setSection3LightImg(about.section3LightImg || EducationLight);
+          setSection3DarkImg(about.section3DarkImg || EducationDark);
+
           setTimeout(() => {
             if (quillRef1.current) {
               quillRef1.current.root.innerHTML = about.aboutDescription || "";
@@ -141,39 +120,31 @@ const Admin_About = () => {
       formData.append("aboutHeading", aboutHeading);
       formData.append("aboutDescription", aboutDescription);
 
-      const lightFilename =
-        lightImage && lightImage.startsWith(VITE_BASE_URL)
-          ? lightImage.split("/").pop()
-          : null;
-      const darkFilename =
-        darkImage && darkImage.startsWith(VITE_BASE_URL)
-          ? darkImage.split("/").pop()
-          : null;
-
-      formData.append("lightImage", lightFilename);
-      formData.append("darkImage", darkFilename);
+      if (lightImage) formData.append("lightImageUrl", lightImage);
+      if (darkImage) formData.append("darkImageUrl", darkImage);
 
       formData.append("counters", JSON.stringify(counters));
       formData.append("section3Title", section3Title);
 
       formData.append("section3Content", section3Content);
 
-      const section3LightFileName =
-        section3LightImg && section3LightImg.startsWith(VITE_BASE_URL)
-          ? section3LightImg.split("/").pop()
-          : null;
+      // const section3LightFileName =
+      //   section3LightImg && section3LightImg.startsWith(VITE_BASE_URL)
+      //     ? section3LightImg.split("/").pop()
+      //     : null;
 
-      const section3DarkFileName =
-        section3DarkImg && section3DarkImg.startsWith(VITE_BASE_URL)
-          ? section3DarkImg.split("/").pop()
-          : null;
-      darkImage && darkImage.startsWith(VITE_BASE_URL)
-        ? darkImage.split("/").pop()
-        : null;
+      // const section3DarkFileName =
+      //   section3DarkImg && section3DarkImg.startsWith(VITE_BASE_URL)
+      //     ? section3DarkImg.split("/").pop()
+      //     : null;
+      // darkImage && darkImage.startsWith(VITE_BASE_URL)
+      //   ? darkImage.split("/").pop()
+      //   : null;
 
-      formData.append("section3LightImg", section3LightFileName);
-
-      formData.append("section3DarkImg", section3DarkFileName);
+      if (section3LightImg)
+        formData.append("section3LightImgUrl", section3LightImg);
+      if (section3DarkImg)
+        formData.append("section3DarkImgUrl", section3DarkImg);
 
       const response = await axios.put("/api/about/update-about", formData);
 
@@ -181,29 +152,15 @@ const Admin_About = () => {
 
       setAboutHeading(updated.aboutHeading);
       setAboutDescription(updated.aboutDescription);
-      setLightImage(
-        updated.lightImage
-          ? `${VITE_BASE_URL}/uploads/gallery/${updated.lightImage}`
-          : LightImage
-      );
+      setLightImage(updated.lightImage);
 
-      setDarkImage(
-        updated.darkImage
-          ? `${VITE_BASE_URL}/uploads/gallery/${updated.darkImage}`
-          : DarkImage
-      );
+      setDarkImage(updated.darkImage);
       setSection3Title(updated.section3Title);
       setSection3Content(updated.section3Content);
-      setSection3LightImg(
-        updated.section3LightImg
-          ? `${VITE_BASE_URL}/uploads/gallery/${updated.section3LightImg}`
-          : EducationLight
-      );
-      setSection3DarkImg(
-        updated.section3DarkImg
-          ? `${VITE_BASE_URL}/uploads/gallery/${updated.section3DarkImg}`
-          : EducationDark
-      );
+      setSection3LightImg(updated.section3LightImg);
+      setSection3DarkImg(updated.section3DarkImg);
+
+      console.log(updated);
 
       toast.success(response.data.message);
     } catch (error) {
@@ -330,14 +287,10 @@ const Admin_About = () => {
                   setShowMedia(true);
                 }}
               >
-                {section3LightImg ? (
-                  <img src={section3LightImg} className="aboutUploadPreview" />
-                ) : (
-                  <div className="aboutPlaceholder">
-                    <IoCloudUploadOutline size={30} />
-                    <p>Light</p>
-                  </div>
-                )}
+                <img
+                  src={section3LightImg || EducationLight}
+                  className="aboutUploadPreview"
+                />
               </div>
 
               {/* Dark */}
@@ -348,14 +301,10 @@ const Admin_About = () => {
                   setShowMedia(true);
                 }}
               >
-                {section3DarkImg ? (
-                  <img src={section3DarkImg} className="aboutUploadPreview" />
-                ) : (
-                  <div className="aboutPlaceholder">
-                    <IoCloudUploadOutline size={30} />
-                    <p>Dark</p>
-                  </div>
-                )}
+                <img
+                  src={section3DarkImg || EducationDark}
+                  className="aboutUploadPreview"
+                />
               </div>
             </div>
           </div>

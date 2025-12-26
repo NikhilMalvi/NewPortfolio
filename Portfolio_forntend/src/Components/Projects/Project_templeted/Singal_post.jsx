@@ -63,10 +63,7 @@ const Singal_post = () => {
         </div>
         <div className="max_container singal_container">
           <div className="col1">
-            <img
-              src={`${VITE_BASE_URL}/uploads/gallery/${post_data.projectImage}`}
-              alt=""
-            />
+            <img src={post_data.projectImageUrl} alt="" />
             <div className="list_post_data">
               <div className="post_icons">
                 <MdDateRange size={20} color="#0068ff" />

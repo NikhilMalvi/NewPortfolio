@@ -26,21 +26,7 @@ pageRouter.put("/home/update-home", protect, upload.none(), updateHome);
 /* -------- About Routes -------- */
 pageRouter.get("/about/all", getAbout);
 
-pageRouter.put(
-  "/about/update-about",
-  protect,
-  (req, res, next) => {
-    req.uploadFolder = "gallery";
-    next();
-  },
-  upload.fields([
-    { name: "lightImage", maxCount: 1 },
-    { name: "darkImage", maxCount: 1 },
-    { name: "section3LightImg", maxCount: 1 },
-    { name: "section3DarkImg", maxCount: 1 },
-  ]),
-  updateAbout
-);
+pageRouter.put("/about/update-about", protect, upload.none(), updateAbout);
 
 /* -------- Profile Routes -------- */
 pageRouter.get("/profile/all", getProfile);
@@ -48,36 +34,19 @@ pageRouter.get("/profile/all", getProfile);
 pageRouter.put(
   "/profile/update-profile",
   protect,
-  (req, res, next) => {
-    req.uploadFolder = "gallery";
-    next();
-  },
-  upload.single("profileImg"),
+  upload.none(),
   updateProfile
 );
 
 /* -------- Technology Routes -------- */
 pageRouter.get("/technology/all", getAllTechnology);
 
-pageRouter.post(
-  "/technology/add-tech",
-  protect,
-  (req, res, next) => {
-    req.uploadFolder = "gallery";
-    next();
-  },
-  upload.single("techImg"),
-  addTechnology
-);
+pageRouter.post("/technology/add-tech", protect, upload.none(), addTechnology);
 
 pageRouter.put(
   "/technology/edit-tech/:id",
   protect,
-  (req, res, next) => {
-    req.uploadFolder = "gallery";
-    next();
-  },
-  upload.single("techImg"),
+  upload.none(),
   editTechnology
 );
 
