@@ -48,7 +48,7 @@ const HomeSkeleton = () => {
                   <Skeleton
                     height={180}
                     width={180}
-                    // style={{ marginTop: 10 }}
+                    style={{ marginBottom: 28 }}
                   />
                 </div>
               </div>
