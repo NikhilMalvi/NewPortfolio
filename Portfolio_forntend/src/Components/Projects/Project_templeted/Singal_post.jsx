@@ -42,9 +42,13 @@ const Singal_post = () => {
     (project) => project._id.toString() === projectId
   );
 
-  // if (!post_data) {
-  //   return <div>Project not found</div>;
-  // }
+  if (!loader) {
+    return <SingalProjectLoader />;
+  }
+
+  if (!post_data) {
+    return <div>Project not found</div>;
+  }
 
   const formatted = new Date(post_data.createdAt).toLocaleDateString("en-GB", {
     day: "2-digit",

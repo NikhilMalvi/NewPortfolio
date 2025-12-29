@@ -1,5 +1,7 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import { MdDateRange, MdOutlinePlace } from "react-icons/md";
+import { FaLink, FaLayerGroup } from "react-icons/fa";
 
 const SingalProjectLoader = () => {
   return (
