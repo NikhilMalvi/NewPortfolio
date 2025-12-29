@@ -7,9 +7,11 @@ import "./About.css";
 import { useAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
 import DOMPurify from "dompurify";
+import AboutLoader from "./AboutLoader";
 
 const About = () => {
   const [isLightMode, setIsLightMode] = useState(true);
+  const [loader, setLoader] = useState(false);
   const { axios } = useAppContext();
   const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
   const [about, setAbout] = useState({});
@@ -19,6 +21,7 @@ const About = () => {
       const { data } = await axios.get("/api/about/all");
       if (data.success) {
         setAbout(data.about);
+        setLoader(true);
       } else {
         toast.error(data.message);
       }
@@ -51,61 +54,65 @@ const About = () => {
         name="description"
         content="Learn more about Nikhil Malviya, a skilled Front-End and WordPress developer based in Ahmedabad, India."
       />
-      <div className="About">
-        <div className="section_container About_me">
-          <div className="max_container">
-            <div className="col1">
-              <img
-                src={isLightMode ? about.lightImageUrl : about.darkImageUrl}
-                alt="About"
-              />
-            </div>
-            <div className="col2">
-              <h1>{about.aboutHeading}</h1>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(about.aboutDescription),
-                }}
-              ></div>
-            </div>
-          </div>
-        </div>
-        <div className="section_container My_workdata">
-          <div className="container_data">
-            {about.counters?.map((item, index) => (
-              <div key={index} className="box_heding">
-                <h1>
-                  {item.value}
-                  {item.symbol}
-                </h1>
-                <p>{item.label}</p>
+      {loader ? (
+        <div className="About">
+          <div className="section_container About_me">
+            <div className="max_container">
+              <div className="col1">
+                <img
+                  src={isLightMode ? about.lightImageUrl : about.darkImageUrl}
+                  alt="About"
+                />
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="section_container MyEducation">
-          <div className="max_container">
-            <div className="col1">
-              <h1>{about.section3Title}</h1>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(about.section3Content),
-                }}
-              ></div>
-            </div>
-            <div className="col2">
-              <img
-                src={
-                  isLightMode
-                    ? about.section3LightImgUrl
-                    : about.section3DarkImgUrl
-                }
-                alt="Education"
-              />
+              <div className="col2">
+                <h1>{about.aboutHeading}</h1>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(about.aboutDescription),
+                  }}
+                ></div>
+              </div>
             </div>
           </div>
+          <div className="section_container My_workdata">
+            <div className="container_data">
+              {about.counters?.map((item, index) => (
+                <div key={index} className="box_heding">
+                  <h1>
+                    {item.value}
+                    {item.symbol}
+                  </h1>
+                  <p>{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="section_container MyEducation">
+            <div className="max_container">
+              <div className="col1">
+                <h1>{about.section3Title}</h1>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(about.section3Content),
+                  }}
+                ></div>
+              </div>
+              <div className="col2">
+                <img
+                  src={
+                    isLightMode
+                      ? about.section3LightImgUrl
+                      : about.section3DarkImgUrl
+                  }
+                  alt="Education"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <AboutLoader />
+      )}
     </>
   );
 };
