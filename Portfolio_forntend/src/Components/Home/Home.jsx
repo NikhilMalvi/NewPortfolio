@@ -2,18 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Home_light_img from "../../img/Home_light_img.png";
 import Home_dark_img from "../../img/Home_dark_img.png";
-import react_img from "../../img/React_js.webp";
-import css_img from "../../img/CSS.webp";
-import javascript_img from "../../img/js.png";
-import tailwind_css from "../../img/tailwind_css.png";
-import wordpress_img from "../../img/wordpress.webp";
 import { FiArrowRight } from "react-icons/fi";
-import Skeleton from "react-loading-skeleton";
-
-import html_img from "../../img/html.png";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
+import HomeLoader from "./HomeLoader";
 
 const Home = () => {
   const [techStack, setTechStack] = useState([]);
@@ -123,8 +116,7 @@ const Home = () => {
         </div>
       ) : (
         <>
-          <Skeleton height={544} width="100%" />
-          <Skeleton height={1123} width="100%" />
+          <HomeLoader />
         </>
       )}
     </>
