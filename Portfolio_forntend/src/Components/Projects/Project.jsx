@@ -4,18 +4,19 @@ import Tab from "./Tab";
 import { projectDataWithAll } from "./item";
 const Project = () => {
   const [mainData, setMaindata] = useState([]);
-  useEffect(() => {
-    const api = "";
 
-    if (api === "/api/project/all") {
-      setMaindata("");
-      console.log("ed");
-    } else if (api === "") {
-      setMaindata(projectDataWithAll);
-      console.log("error come");
-      console.log(projectDataWithAll, "data come");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const api = "";
+
+  //   if (api === "/api/project/all") {
+  //     setMaindata("");
+  //     console.log("ed");
+  //   } else if (api === "") {
+  //     setMaindata(projectDataWithAll);
+  //     console.log("error come");
+  //     console.log(projectDataWithAll, "data come");
+  //   }
+  // }, []);
 
   return (
     <>
