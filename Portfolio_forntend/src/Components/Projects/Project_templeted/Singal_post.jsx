@@ -10,11 +10,14 @@ import { useAppContext } from "../../../context/AppContext";
 import { useState } from "react";
 import Project from "../Project";
 import DOMPurify from "dompurify";
+import SingalProjectLoader from "./SingalProjectLoader";
 
 const Singal_post = () => {
   const { projectId } = useParams();
   const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
   const { axios } = useAppContext();
+  const [loader, setLoader] = useState(false);
+
   const [projectData, setProjectData] = useState([]);
 
   const fetchProjectData = async () => {
@@ -22,6 +25,7 @@ const Singal_post = () => {
       const { data } = await axios.get("/api/project/all");
       if (data.success) {
         setProjectData(data.project);
+        setLoader(true);
       } else {
         toast.error(data.message);
       }
@@ -56,59 +60,63 @@ const Singal_post = () => {
         name="description"
         content="A modern and responsive real estate landing page built using React and Tailwind CSS. Designed and developed by Nikhil Malviya."
       />
-      <div className="singal_post section_container">
-        <div className="title">
-          <h1>{post_data.projectTitle}</h1>
-          <p>Here Some details About {post_data.projectTitle}</p>
-        </div>
-        <div className="max_container singal_container">
-          <div className="col1">
-            <img src={post_data.projectImageUrl} alt="" />
-            <div className="list_post_data">
-              <div className="post_icons">
-                <MdDateRange size={20} color="#0068ff" />
-                {formatted}
-              </div>
-              <div className="post_icons">
-                <FaLink size={20} color="#0068ff" />
-                <a href={post_data.projectWebsite} target="_blank">
-                  Website
-                </a>
-              </div>
-              <div className="post_icons">
-                <FaLayerGroup size={20} color="#0068ff" />
-                {post_data.projectSkills.map((skill, index) => (
-                  <span key={index}>
-                    {skill.skillName}
-                    {index < post_data.projectSkills.length - 1 ? ", " : ""}
-                  </span>
-                ))}
-              </div>
-              <div className="post_icons">
-                <MdOutlinePlace size={20} color="#0068ff" />
-                {post_data.projectLocation}
+      {loader ? (
+        <div className="singal_post section_container">
+          <div className="title">
+            <h1>{post_data.projectTitle}</h1>
+            <p>Here Some details About {post_data.projectTitle}</p>
+          </div>
+          <div className="max_container singal_container">
+            <div className="col1">
+              <img src={post_data.projectImageUrl} alt="" />
+              <div className="list_post_data">
+                <div className="post_icons">
+                  <MdDateRange size={20} color="#0068ff" />
+                  {formatted}
+                </div>
+                <div className="post_icons">
+                  <FaLink size={20} color="#0068ff" />
+                  <a href={post_data.projectWebsite} target="_blank">
+                    Website
+                  </a>
+                </div>
+                <div className="post_icons">
+                  <FaLayerGroup size={20} color="#0068ff" />
+                  {post_data.projectSkills.map((skill, index) => (
+                    <span key={index}>
+                      {skill.skillName}
+                      {index < post_data.projectSkills.length - 1 ? ", " : ""}
+                    </span>
+                  ))}
+                </div>
+                <div className="post_icons">
+                  <MdOutlinePlace size={20} color="#0068ff" />
+                  {post_data.projectLocation}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col2">
-            <h1 className="primery_heading">
-              Name : <span>{post_data.projectTitle}</span>
-            </h1>
-            <h1 className="primery_heading">
-              Tools: <span>{post_data.projectTools}</span>
-            </h1>
-            <h1 className="primery_heading">
-              About:
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(post_data.projectDescription),
-                }}
-                className="post_description"
-              ></div>
-            </h1>
+            <div className="col2">
+              <h1 className="primery_heading">
+                Name : <span>{post_data.projectTitle}</span>
+              </h1>
+              <h1 className="primery_heading">
+                Tools: <span>{post_data.projectTools}</span>
+              </h1>
+              <h1 className="primery_heading">
+                About:
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(post_data.projectDescription),
+                  }}
+                  className="post_description"
+                ></div>
+              </h1>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <SingalProjectLoader />
+      )}
     </>
   );
 };
