@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router";
 import { AppProvider } from "./context/AppContext";
+import "react-loading-skeleton/dist/skeleton.css";
 
 // const router = createBrowserRouter([
 //   {

@@ -8,6 +8,7 @@ import javascript_img from "../../img/js.png";
 import tailwind_css from "../../img/tailwind_css.png";
 import wordpress_img from "../../img/wordpress.webp";
 import { FiArrowRight } from "react-icons/fi";
+import Skeleton from "react-loading-skeleton";
 
 import html_img from "../../img/html.png";
 import { Link } from "react-router-dom";
@@ -16,6 +17,7 @@ import toast from "react-hot-toast";
 
 const Home = () => {
   const [techStack, setTechStack] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   const [home, setHome] = useState({});
   const { axios } = useAppContext();
@@ -26,6 +28,7 @@ const Home = () => {
       const { data } = await axios.get(`${VITE_BASE_URL}/api/technology/all`);
       if (data.success) {
         setTechStack(data.technology);
+        setLoader(true);
       } else {
         toast.error(data.message);
       }
@@ -40,6 +43,7 @@ const Home = () => {
 
       if (data.success) {
         setHome(data.home);
+        setLoader(true);
       } else {
         toast.error(data.message);
       }
@@ -83,39 +87,46 @@ const Home = () => {
         content="Hi, I'm Nikhil Malviya — a Front-End Developer and WordPress expert based in India. I build clean, responsive websites that deliver seamless user experiences."
       />
 
-      <div className="home">
-        <section className="section_container row1">
-          <div className="max_container">
-            <div className="col1">
-              <h1>{home.homeHeading || "Hello, I'm Nikhil Malviya"}</h1>
-              <h2>
-                {home.homeDescription ||
-                  "A MERN Stack & Wordpress(Front-end) Developer"}
-              </h2>
-              <Link className="btn" to={`/${home.homeCTALink || "/contact"}`}>
-                {home.homeCTA || "Contact us"}
-                <FiArrowRight />
-              </Link>
-            </div>
-            <div className="col2">
-              <img src={logo} alt="" />
-            </div>
-          </div>
-        </section>
-        <section className="section_container row2">
-          <h1 className="tech_heading">Tech Stack</h1>
-          <div className="tech_stack">
-            {techStack.map((tech) => (
-              <div className="image_boxes" key={tech._id}>
-                <div className="box">
-                  <img src={tech.techImgUrl} alt="" />
-                  <h1 className="tech_name">{tech.techName}</h1>
-                </div>
+      {loader ? (
+        <div className="home">
+          <section className="section_container row1">
+            <div className="max_container">
+              <div className="col1">
+                <h1>{home.homeHeading || "Hello, I'm Nikhil Malviya"}</h1>
+                <h2>
+                  {home.homeDescription ||
+                    "A MERN Stack & Wordpress(Front-end) Developer"}
+                </h2>
+                <Link className="btn" to={`/${home.homeCTALink || "/contact"}`}>
+                  {home.homeCTA || "Contact us"}
+                  <FiArrowRight />
+                </Link>
               </div>
-            ))}
-          </div>
-        </section>
-      </div>
+              <div className="col2">
+                <img src={logo} alt="" />
+              </div>
+            </div>
+          </section>
+          <section className="section_container row2">
+            <h1 className="tech_heading">Tech Stack</h1>
+            <div className="tech_stack">
+              {techStack.map((tech) => (
+                <div className="image_boxes" key={tech._id}>
+                  <div className="box">
+                    <img src={tech.techImgUrl} alt="" />
+                    <h1 className="tech_name">{tech.techName}</h1>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      ) : (
+        <>
+          <Skeleton height={544} width="100%" />
+          <Skeleton height={1123} width="100%" />
+        </>
+      )}
     </>
   );
 };
