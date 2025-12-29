@@ -17,7 +17,7 @@ const AboutLoader = () => {
       </div>
       <div className="section_container My_workdata">
         <div className="container_data">
-          {Array(9)
+          {Array(3)
             .fill(0)
             .map((_, index) => (
               <div key={index} className="box_heding">

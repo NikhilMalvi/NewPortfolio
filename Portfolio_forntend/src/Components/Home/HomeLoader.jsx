@@ -21,7 +21,7 @@ const HomeSkeleton = () => {
           </div>
 
           <div className="col2">
-            <Skeleton width={500} height={500} />
+            <Skeleton width={437.5} height={437.5} />
           </div>
         </div>
       </section>
