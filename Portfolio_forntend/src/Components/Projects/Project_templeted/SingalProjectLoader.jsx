@@ -9,7 +9,7 @@ const SingalProjectLoader = () => {
       <div className="title">
         <Skeleton width="60%" height={28} style={{ marginBottom: 20 }} />
         <p>
-          Here Some details About <Skeleton width="100%" height={52.5} />
+          Here Some details About <Skeleton width="60%" height={52.5} />
         </p>
       </div>
       <div className="max_container singal_container">
