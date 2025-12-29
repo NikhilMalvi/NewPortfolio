@@ -27,11 +27,19 @@ const HomeSkeleton = () => {
       </section>
 
       {/* TECH STACK SECTION */}
-      <section className="section_container row2">
-        <Skeleton height={30} width={200} style={{ marginBottom: 20 }} />
+      <section
+        className="section_container row2"
+        style={{ textAlign: "center" }}
+      >
+        <Skeleton
+          height={60}
+          width={200}
+          style={{ marginBottom: 20 }}
+          className=""
+        />
 
         <div className="tech_stack">
-          {Array(6)
+          {Array(9)
             .fill(0)
             .map((_, index) => (
               <div className="image_boxes" key={index}>
