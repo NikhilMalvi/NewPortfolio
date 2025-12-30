@@ -7,12 +7,14 @@ import img_3 from "../../img/img_3.jpg";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import { useAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
+import Skeleton from "react-loading-skeleton";
 
 const Imge_slider = () => {
   const [currnt_index, setcurrnt_index] = useState(0);
   const [AutoPlay, setAutoPlay] = useState(true);
 
   const [tech, setTech] = useState([]);
+  const [loader, setLoader] = useState(false);
   const { axios, navigate } = useAppContext();
   const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -22,6 +24,7 @@ const Imge_slider = () => {
 
       if (data.success) {
         setTech(data.technology);
+        setLoader(true);
       } else {
         toast.error(data.message);
       }
@@ -75,19 +78,32 @@ const Imge_slider = () => {
       onMouseLeave={() => setAutoPlay(true)}
     >
       <div className="slider_wrapper">
-        {tech.map((techStack, index) => (
-          <div
-            className={
-              index == currnt_index
-                ? "carousel_card carousel_card_active"
-                : "carousel_card"
-            }
-            key={techStack._id}
-          >
-            <img src={techStack.techImgUrl} alt="" className="carousel_img" />
-            <h2>{techStack.techName}</h2>
-          </div>
-        ))}{" "}
+        {loader ? (
+          <>
+            {tech.map((techStack, index) => (
+              <div
+                className={
+                  index == currnt_index
+                    ? "carousel_card carousel_card_active"
+                    : "carousel_card"
+                }
+                key={techStack._id}
+              >
+                <img
+                  src={techStack.techImgUrl}
+                  alt=""
+                  className="carousel_img"
+                />
+                <h2>{techStack.techName}</h2>
+              </div>
+            ))}{" "}
+          </>
+        ) : (
+          <>
+            <Skeleton height={174} width={174} style={{ marginBottom: 15 }} />
+            <Skeleton height={25} width="100" />
+          </>
+        )}
         <div className="slider_arrow_left" onClick={slide_left}>
           <MdKeyboardArrowLeft />
         </div>
