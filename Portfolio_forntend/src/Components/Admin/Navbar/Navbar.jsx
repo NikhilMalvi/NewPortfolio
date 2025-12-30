@@ -20,22 +20,22 @@ const Navbar = () => {
     setopenmenu(!openmenu);
   };
 
-  useEffect(() => {
-    const updateLogo = () => {
-      setLogo(
-        document.body.classList.contains("light-mode")
-          ? `https://ik.imagekit.io/elnldr19u/uploads/gallery/Light_logo_eYX832kue.png`
-          : `https://ik.imagekit.io/elnldr19u/uploads/gallery/Dark_logo_VpiM4MHQV.png`
-      );
-    };
+  // useEffect(() => {
+  //   const updateLogo = () => {
+  //     setLogo(
+  //       document.body.classList.contains("light-mode")
+  //         ? `https://ik.imagekit.io/elnldr19u/uploads/gallery/Light_logo_eYX832kue.png`
+  //         : `https://ik.imagekit.io/elnldr19u/uploads/gallery/Dark_logo_VpiM4MHQV.png`
+  //     );
+  //   };
 
-    updateLogo();
+  //   updateLogo();
 
-    const checkbox = document.getElementById("theme-checkbox");
-    checkbox?.addEventListener("change", updateLogo);
+  //   const checkbox = document.getElementById("theme-checkbox");
+  //   checkbox?.addEventListener("change", updateLogo);
 
-    return () => checkbox?.removeEventListener("change", updateLogo);
-  }, []);
+  //   return () => checkbox?.removeEventListener("change", updateLogo);
+  // }, []);
 
   const logOut = () => {
     localStorage.removeItem("token");
@@ -47,7 +47,11 @@ const Navbar = () => {
   return (
     <div className="admin_navbar">
       <div className="admin_logo">
-        <img src={logo} alt="logo" onClick={() => navigate("/")} />
+        <img
+          src="https://ik.imagekit.io/elnldr19u/uploads/gallery/Light_logo_eYX832kue.png"
+          alt="logo"
+          onClick={() => navigate("/")}
+        />
       </div>
 
       <div className="">

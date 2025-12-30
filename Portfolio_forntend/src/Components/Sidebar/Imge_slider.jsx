@@ -101,7 +101,7 @@ const Imge_slider = () => {
         ) : (
           <>
             <Skeleton height={174} width={174} style={{ marginBottom: 15 }} />
-            <Skeleton height={25} width="100" />
+            <Skeleton height={25} width="100%" />
           </>
         )}
         <div className="slider_arrow_left" onClick={slide_left}>
