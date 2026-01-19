@@ -68,7 +68,7 @@ const Sidebar = () => {
           </a>
         </div>
         <div className="Copy_right">
-          <h1> © 2025 ❤️ Nikhil Malviya</h1>
+          <h1> © 2026 ❤️ Nikhil Malviya</h1>
         </div>
       </div>
     </div>
