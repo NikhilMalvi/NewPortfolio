@@ -54,16 +54,32 @@ const Sidebar = () => {
       <div className="icons_container">
         <h3 className="follow">Follow Me</h3>
         <div className="social_icons">
-          <a href="#">
+          <a
+            href="https://www.instagram.com/nik.malvi.2002/"
+            target="_blank"
+            className="instagram"
+          >
             <FaInstagram />
           </a>
-          <a href="#" className="facebook">
+          <a
+            href="https://www.facebook.com/nikhil.malvi.1297"
+            target="_blank"
+            className="facebook"
+          >
             <FaFacebookF />
           </a>
-          <a href="#">
+          <a
+            href="https://www.linkedin.com/in/nikhil-malviya-702254258/"
+            target="_blank"
+            className="linkedin"
+          >
             <FaLinkedin />
           </a>
-          <a href="#">
+          <a
+            href="https://github.com/NikhilMalviya"
+            target="_blank"
+            className="github"
+          >
             <FaGithub />
           </a>
         </div>
