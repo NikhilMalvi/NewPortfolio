@@ -69,14 +69,14 @@ const Sidebar = () => {
             <FaFacebookF />
           </a>
           <a
-            href="https://www.linkedin.com/in/nikhil-malviya-702254258/"
+            href="https://www.linkedin.com/in/nikhil-malviya-488210332/"
             target="_blank"
             className="linkedin"
           >
             <FaLinkedin />
           </a>
           <a
-            href="https://github.com/NikhilMalviya"
+            href="https://github.com/NikhilMalvi"
             target="_blank"
             className="github"
           >
